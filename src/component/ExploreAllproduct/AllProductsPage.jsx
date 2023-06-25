@@ -35,9 +35,7 @@ const AllProductsPage = () => {
      </div>
  
 
-   <div className='mx-20 '>
  
-   </div>
         </div>
     );
 };

@@ -59,9 +59,9 @@ const Navbar = () => {
 </Link>
 
 
+ <Link to='/login'> <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button></Link>
  
-  <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button>
- <div className='flex mt-5'> <p className=' text-gray-400'>no account yet? </p><p className='font-bold ms-3 hover:bg-blue-200 rounded-xl px-2 duration-500'><Link>Register</Link></p></div>
+ <div className='flex mt-5'> <p className=' text-gray-400'>no account yet? </p><p className='font-bold ms-3 hover:bg-blue-200 rounded-xl px-2 duration-500'><Link to='/register'>Register</Link></p></div>
   </ul>
 </div>
 

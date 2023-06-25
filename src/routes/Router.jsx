@@ -7,6 +7,8 @@ import Home from "../pages/home/Home";
 import UserAccount from "../pages/Account/UserAccount";
 import BecomeAseller from "../pages/becomeAseller/BecomeAseller";
 import AllProductsPage from "../component/ExploreAllproduct/AllProductsPage";
+import Login from "../pages/login/Login";
+import Signup from "../pages/signup/Signup";
 
   export const router = createBrowserRouter([
     {
@@ -30,5 +32,13 @@ import AllProductsPage from "../component/ExploreAllproduct/AllProductsPage";
     {
       path:'/becomeAseller',
       element:<BecomeAseller/>
+    },
+    {
+      path:'/login',
+      element:<Login/>
+    },
+    {
+      path:'/register',
+      element:<Signup/>
     }
   ]);
