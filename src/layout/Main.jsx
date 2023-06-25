@@ -5,11 +5,13 @@ import Navbar from "../shared/Navbar";
 
 const Main = () => {
     return (
-        <div>
-            <Navbar/>
+        <>
+         
+          <Navbar/>
+    
             <Outlet></Outlet>
             <Footer/>
-        </div>
+        </>
     );
 };
 
