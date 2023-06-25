@@ -18,8 +18,12 @@ const BecomeAseller = () => {
             </div>
             <div className=' mx-auto col-span-2  '>
        
- <Link to='/'>            <p className='text-center text-2xl  btn border-0 text-white mx-auto mt-5'>Home</p></Link>
+
+<Link to='/'>            <p className='text-center text-2xl  btn border-0 text-white mx-auto mt-5'>Home</p></Link>
+<p>log in</p>
                 <p className='text-center text-6xl text-black mt-10'>Seller Information</p>
+        
+
            
 
             <form className="z-10 card-body shadow-2xl rounded-xl   mt-5">
@@ -43,25 +47,25 @@ const BecomeAseller = () => {
           <label className="label">
             <span className="label-text">Seller Name</span>
           </label>
-          <input type="text" placeholder="enter your Name" className="input input-bordered" />
+          <input type="text" placeholder="enter your Name" className="bg-white py-5 px-2 rounded-lg" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Shop Name</span>
           </label>
-          <input type="text" placeholder="Enter Your shop name" className="input input-bordered" />
+          <input type="text" placeholder="Enter Your shop name" className="bg-white py-5 px-2 rounded-lg" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="Enter Your  email" className="input input-bordered" />
+          <input type="email" placeholder="Enter Your  email" className="bg-white py-5 px-2 rounded-lg" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">password</span>
           </label>
-          <input type="password" placeholder="Enter a password" className="input input-bordered" />
+          <input type="password" placeholder="Enter a password" className="bg-white py-5 px-2 rounded-lg" />
         </div>
     
      

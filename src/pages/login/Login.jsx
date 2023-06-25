@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import login from '../../assets/userlogin.jpg'
 import { Slide } from 'react-awesome-reveal';
+import { AiTwotoneHome } from "react-icons/ai";
 const Login = () => {
     return (
         <div className=' grid lg: grid-cols-3 h-[949px]'>
@@ -15,10 +16,17 @@ const Login = () => {
          </Slide>
 
         </div>
-        <div className=' mx-auto col-span-2  '>
+        <div className='  mx-auto col-span-2 mt-10'>
+            <div className='bg-white py-3  rounded-xl px-6 justify-between flex'>
+         
+            <Link to='/'>            <p className='text-center text-2xl  btn border-0 text-white mx-auto '><AiTwotoneHome/></p></Link>
+            <p className='text-black text-4xl my-auto font-semibold'>Log In</p>
+            </div>
+       
    
-<Link to='/'>            <p className='text-center text-2xl  btn border-0 text-white mx-auto mt-5'>Home</p></Link>
+
             <p className='text-center text-6xl text-black mt-10'>User Information</p>
+          
        
 
         <form className="z-10 card-body shadow-2xl rounded-xl   mt-5">
