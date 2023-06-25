@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   
     return (
-        <div className="navbar z-20 fixed  rounded-2xl h-[90px] bg-[rgb(255,255,255)] text-black">
+      <div className="navbar  h-[90px]  bg-[rgb(255,255,255)] rounded-2xl   text-black">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -44,14 +44,17 @@ const Navbar = () => {
        
         <div className="dropdown dropdown-end   ">
   <label tabIndex={0} className=" m-1  "><AiOutlineUser className='hover:bg-red-600 rounded-full ' size={30}/></label>
-  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 h-[380px]  bg-[rgb(255,255,255)]  shadow rounded-box w-[300px]">
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 h-[460px]  bg-[rgb(255,255,255)]  shadow rounded-box w-[300px]">
   
-<p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p>
+<Link to='/account'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
 <hr />
 <p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>Support </p>
 <hr />
 <p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1  duration-500'>Language </p>
 <hr />
+<Link to='/becomeAseller'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 bg-yellow-400 rounded-xl px-2 hover:border-1  duration-500'>Become a seller </p>
+</Link>
+
 
  
   <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button>

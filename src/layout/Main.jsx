@@ -7,9 +7,13 @@ const Main = () => {
     return (
         <>
          
-          <Navbar/>
+    <div className="mx-20  bg-[rgb(249,243,240)] rounded-xl">
+    <Navbar/>
+    </div>
     
-            <Outlet></Outlet>
+    
+         <Outlet></Outlet>
+        
             <Footer/>
         </>
     );
