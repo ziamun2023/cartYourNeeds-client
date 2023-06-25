@@ -6,6 +6,7 @@ import Main from "../layout/Main";
 import Home from "../pages/home/Home";
 import UserAccount from "../pages/Account/UserAccount";
 import BecomeAseller from "../pages/becomeAseller/BecomeAseller";
+import AllProductsPage from "../component/ExploreAllproduct/AllProductsPage";
 
   export const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ import BecomeAseller from "../pages/becomeAseller/BecomeAseller";
         {
             path:'/',
             element:<Home/>
+        },
+        {
+            path:'/allproducts',
+            element:<AllProductsPage/>
         }
       ]
     },

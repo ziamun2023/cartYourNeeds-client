@@ -8,6 +8,9 @@ import Slider3 from '../../component/Caorousel.jsx/Slider3';
 // import Section1 from './Section1';
 import CategorySection1 from '../../component/CategorySection/CategorySection1';
 import SpecialOffer from '../../component/SpecialOffer/SpecialOffer';
+import ExploreAllProduct from '../../component/ExploreAllproduct/ExploreAllProduct';
+import OfferSection from '../../component/offersection/OfferSection';
+import WhyPeopleChooseus from '../../component/WhyPeopleChoose/WhyPeopleChooseus';
 
 const Home = () => {
     const [random,setRandom]=useState(true)
@@ -57,6 +60,14 @@ const Home = () => {
 
    {/* special offer section 3 */}
    <SpecialOffer/>
+   {/* all products section 4 */}
+   <ExploreAllProduct/>
+   {/* Banner */}
+   <OfferSection/>
+
+   {/* why people choos */}
+
+   <WhyPeopleChooseus/>
         </>
     );
 };
