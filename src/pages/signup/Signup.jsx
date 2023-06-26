@@ -6,8 +6,10 @@ import signup from '../../assets/signup.jpg'
 import { AuthContext } from '../../Provider/AuthContext';
 import { SaveUserFromSite, UserPanel } from '../../api/auth';
 import {FcGoogle} from "react-icons/Fc"
+
 import { toast } from 'react-hot-toast';
 const Signup = () => {
+
 
 
   const navigate=useNavigate()
@@ -93,6 +95,7 @@ const Signup = () => {
              console.log(result.user.email)
                         toast.success('logged in successfully !') 
                         UserPanel(result.user.email)
+                     
                      
                         navigate(from , {replace: true})
                     })

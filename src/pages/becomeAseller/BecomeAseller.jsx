@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Fade, Slide } from 'react-awesome-reveal';
 import seller from '../../assets/seller.jpg'
-import { Link } from 'react-router-dom';
-import becomeSellerPoster from '../../assets/Untitled (1587 × 2245px) (3000 × 2245px) (3000 × 5000px) (3000 × 4000px).png'
+import { Link, useNavigate } from 'react-router-dom';
+// import becomeSellerPoster from '../../assets/Untitled (1587 × 2245px) (3000 × 2245px) (3000 × 5000px) (3000 × 4000px).png'
+import { AuthContext } from '../../Provider/AuthContext';
+import { toast } from 'react-hot-toast';
+import { adminRequest } from '../../api/auth';
+
 const BecomeAseller = () => {
+  const {user}=useContext(AuthContext)
+const navigate=useNavigate()
+  const request=()=>{
+    
+   
+  
+    adminRequest(user.email).then(data=>{
+      toast.success('Request sent to Admin,You will notify in the Account section , Thanks for joinign us. ')
+     
+    
+    })
+    navigate('/Confirmation')
+  
+  }
     return (
         <div className=' grid lg: grid-cols-3 h-[949px]'>
             
@@ -21,10 +39,10 @@ const BecomeAseller = () => {
 
 <Link to='/'>            <p className='text-center text-2xl  btn border-0 text-white mx-auto mt-5'>Home</p></Link>
 
-                <p className='text-center text-6xl text-black mt-10'>Seller Information</p>
         
+                <p className='text-center text-6xl text-black mt-10'>Seller Information</p>
+              
 
-           
 
             <form className="z-10 card-body shadow-2xl rounded-xl   mt-5">
           
@@ -59,20 +77,15 @@ const BecomeAseller = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="Enter Your  email" className="bg-white py-5 px-2 rounded-lg" />
+          <input type="email"  placeholder="Enter Your  email"  className="bg-white py-5 px-2 rounded-lg" />
         </div>
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">password</span>
-          </label>
-          <input type="password" placeholder="Enter a password" className="bg-white py-5 px-2 rounded-lg" />
-        </div>
+     
     
      
 
     
         <div className="form-control mt-6 col-span-2">
-          <button className="btn">Sign up</button>
+          <button onClick={request} className="btn">Send Request to Admin</button>
         </div>
       </form>
     </div>

@@ -69,6 +69,26 @@ export const SaveUserFromSite =user=>{
    
     }
 
+    //seller request to admin
+    export const adminRequest =(email)=>{
+        const currentUser={
+            requestToSell: 'pending',
+            requestMessage:'hello Admin , i want to be a seller in your website, would like to grow business with this website, please consider my request '
+
+        }
+
+ return fetch(`http://localhost:5000/users/${email}`,{
+            method:'PUT',
+            headers:{
+                'content-type':"application/json"
+            }, //the data is being sent in  json format
+            body: JSON.stringify(currentUser)
+        })
+    .then(res=>res.json())
+   
+    }
+
+
 
 
 // get role

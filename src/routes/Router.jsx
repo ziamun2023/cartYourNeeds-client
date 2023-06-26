@@ -17,6 +17,8 @@ import MakeAction from "../DashBoard/AdminDashboard/MakeAction";
 import PrivateRoute from "../private/PrivateRoute";
 import SellerPrivateRoute from "../private/SellerPrivateRoute";
 import UserPrivateRoute from "../private/UserPrivateRoute";
+import Confirmation from "../pages/becomeAseller/Confirmation";
+import AddnewItem from "../DashBoard/SellerDashboard/AddnewItem";
 
   export const router = createBrowserRouter([
     {
@@ -35,15 +37,22 @@ import UserPrivateRoute from "../private/UserPrivateRoute";
     },
     {
       path:'/account',
-      element:<UserPrivateRoute><UserAccount/></UserPrivateRoute>
+      element:<UserPrivateRoute><UserAccount/></UserPrivateRoute>,
+      children:[
+        
+      ]
     },
     {
       path:'/becomeAseller',
       element:<BecomeAseller/>
     },
     {
-      path:'/SellerAccount',
-      element:<SellerPrivateRoute><SellerAccount/></SellerPrivateRoute>
+      path:'SellerAccount',
+      element:<SellerPrivateRoute><SellerAccount/></SellerPrivateRoute>,
+      children:[
+        {path:'addnewProduct',
+      element:<AddnewItem/>}
+      ]
     },
     {
       path:'AdminAccount',
@@ -62,5 +71,9 @@ import UserPrivateRoute from "../private/UserPrivateRoute";
     {
       path:'/register',
       element:<Signup/>
+    },
+    {
+      path:'/Confirmation',
+      element:<Confirmation/>
     }
   ]);

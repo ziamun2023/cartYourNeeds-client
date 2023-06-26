@@ -3,20 +3,43 @@ import {  getUserData } from '../../api/Getdata';
 import { AuthContext } from '../../Provider/AuthContext';
 
 import { toast } from 'react-hot-toast';
-import { adminPanel } from '../../api/auth';
+import { UserPanel, adminPanel, sellerPanel } from '../../api/auth';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ManageUser = () => {
   const { user, logOut ,role,setRole} = useContext(AuthContext)
-
+const navigate=useNavigate()
 
  const makeAdmin=(email)=>{
   adminPanel(email).then(data=>{
     console.log(data)
-    toast.success('you are now a host')
-    setRole('admin')
-    closeMOdal()
+  
+    Swal.fire(email, 'This user has become  An Admin of CART YOUR NEED website ')
+   
+   
    })
 console.log(email)
+ }
+ const makeSeller=(email)=>{
+  sellerPanel(email).then(data=>{
+  
+    Swal.fire(email, 'This user has become A seller of CART YOUR NEED website ')
+   
+    })
+
+   
+  
+ }
+ const makeUser=(email)=>{
+  UserPanel(email).then(data=>{
+  
+    Swal.fire(email, 'This user has become A user of CART YOUR NEED website ')
+   
+    })
+
+   
+  
  }
     const alluser=getUserData()
     console.log(alluser)
@@ -46,15 +69,15 @@ console.log(email)
                 <td className='text-black text-[13px]'>{}</td>
                 <td className='text-black text-[13px]'>{c.email}</td>
                 <td className='text-black text-[13px]'>{c.email}</td>
-                <td className='text-black text-[13px]'>{c.email}</td>
+                <td className='text-black text-[13px]'>{c.role}</td>
                 <td className='text-black text-[13px]'>Details</td>
                 {/* <td className='text-black text-[13px]'>{c.email}</td> */}
                 {/* <td className='text-black text-[13px]'>{c.email}</td> */}
                 <td class Name='text-black text-[13px]  '>
                   
                 <button onClick={()=>makeAdmin(`${c.email}`)} className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md   animatin-btn duration-500'>admin</button>
-      <button className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md admin-btn duration-500'>Seller</button>
-      <button className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md user-btn  duration-500'>User</button></td> 
+      <button onClick={()=>makeSeller(`${c.email}`)} className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md admin-btn duration-500'>Seller</button>
+      <button  onClick={()=>makeUser(`${c.email}`)}  className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md user-btn  duration-500'>User</button></td> 
          
               
               </tr>)

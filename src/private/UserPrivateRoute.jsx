@@ -2,6 +2,7 @@ import { useContext } from 'react'
 
 import { Navigate, useLocation } from 'react-router'
 import { AuthContext } from '../Provider/AuthContext'
+import UserAccount from '../pages/Account/UserAccount'
 
 
 const UserPrivateRoute = ({ children }) => {
@@ -13,7 +14,7 @@ const UserPrivateRoute = ({ children }) => {
   }
 
   if (whatTherole==='user') {
-    return children
+    return children 
   }
   return <Navigate to='/login' state={{ from: location }} replace></Navigate>
 }
