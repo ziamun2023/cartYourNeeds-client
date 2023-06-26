@@ -14,6 +14,9 @@ import SellerAccount from "../pages/Account/SellerAccount";
 import AdminAccount from "../pages/Account/AdminAccount";
 import ManageUser from "../DashBoard/AdminDashboard/ManageUser";
 import MakeAction from "../DashBoard/AdminDashboard/MakeAction";
+import PrivateRoute from "../private/PrivateRoute";
+import SellerPrivateRoute from "../private/SellerPrivateRoute";
+import UserPrivateRoute from "../private/UserPrivateRoute";
 
   export const router = createBrowserRouter([
     {
@@ -32,7 +35,7 @@ import MakeAction from "../DashBoard/AdminDashboard/MakeAction";
     },
     {
       path:'/account',
-      element:<UserAccount/>
+      element:<UserPrivateRoute><UserAccount/></UserPrivateRoute>
     },
     {
       path:'/becomeAseller',
@@ -40,11 +43,11 @@ import MakeAction from "../DashBoard/AdminDashboard/MakeAction";
     },
     {
       path:'/SellerAccount',
-      element:<SellerAccount/>
+      element:<SellerPrivateRoute><SellerAccount/></SellerPrivateRoute>
     },
     {
       path:'AdminAccount',
-      element:<AdminAccount/>,
+      element:<PrivateRoute><AdminAccount/></PrivateRoute>,
       children:[
         {path:'ManageUser',
       element:<ManageUser/>},

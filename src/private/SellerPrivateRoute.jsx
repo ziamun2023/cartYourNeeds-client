@@ -4,7 +4,7 @@ import { Navigate, useLocation } from 'react-router'
 import { AuthContext } from '../Provider/AuthContext'
 
 
-const PrivateRoute = ({ children }) => {
+const SellerPrivateRoute = ({ children }) => {
   const { user, loading ,whatTherole} = useContext(AuthContext)
   const location = useLocation()
 
@@ -12,10 +12,13 @@ const PrivateRoute = ({ children }) => {
     return  <p>loader</p>
   }
 
-  if (whatTherole==='admin') {
+  if (whatTherole==='seller') {
     return children
   }
   return <Navigate to='/login' state={{ from: location }} replace></Navigate>
 }
 
-export default PrivateRoute
+export default SellerPrivateRoute
+
+
+

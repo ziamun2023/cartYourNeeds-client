@@ -16,10 +16,46 @@ export const SaveUserFromSite =user=>{
     .then(data=>console.log(data))
     }
 
-
+// Admin Panel
     export const adminPanel =(email)=>{
         const currentUser={
             role: 'admin',
+        }
+
+ return fetch(`http://localhost:5000/users/${email}`,{
+            method:'PUT',
+            headers:{
+                'content-type':"application/json"
+            }, //the data is being sent in  json format
+            body: JSON.stringify(currentUser)
+        })
+    .then(res=>res.json())
+   
+    }
+
+    // make USer
+
+    export const UserPanel =(email)=>{
+        const currentUser={
+            role: 'user',
+        }
+
+ return fetch(`http://localhost:5000/users/${email}`,{
+            method:'PUT',
+            headers:{
+                'content-type':"application/json"
+            }, //the data is being sent in  json format
+            body: JSON.stringify(currentUser)
+        })
+    .then(res=>res.json())
+   
+    }
+
+    // seller panel
+
+    export const sellerPanel =(email)=>{
+        const currentUser={
+            role: 'seller',
         }
 
  return fetch(`http://localhost:5000/users/${email}`,{

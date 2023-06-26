@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import {AiTwotoneHome} from "react-icons/ai"
 import signup from '../../assets/signup.jpg'
 import { AuthContext } from '../../Provider/AuthContext';
-import { SaveUserFromSite } from '../../api/auth';
+import { SaveUserFromSite, UserPanel } from '../../api/auth';
 import {FcGoogle} from "react-icons/Fc"
 import { toast } from 'react-hot-toast';
 const Signup = () => {
@@ -24,28 +24,50 @@ const Signup = () => {
       const from =location.state?.from?.pathname || '/'
 
      
-          const handleGoogleSignIn=()=>{
-              signInWithGoogle()
-              .then(result=>{
-                  console.log(result.user)
-                  toast.success('logged in successfully !')
-                  navigate(from , {replace: true})
-              })
-              .catch(err=>{
-                  console.log(err.message)
-                  toast.error(err.message)
-                  setLoading(false)
-              })
+          // const handleGoogleSignIn=()=>{
+          //     signInWithGoogle()
+          //     .then(result=>{
+          //         console.log(result.user)
+          //         toast.success('logged in successfully !')
+          //         navigate(from , {replace: true})
+          //     })
+          //     .catch(err=>{
+          //         console.log(err.message)
+          //         toast.error(err.message)
+          //         setLoading(false)
+          //     })
   
   
   
-          }
+          // }
 
+          const handleGoogleSignIn = () => {
+            signInWithGoogle()
+                .then(result => {
+                    const userLogin = result.user;
+                    console.log(userLogin);
+                    toast.success('logged in successfully !')
+                    const saveUser = { name: userLogin.displayName, email: userLogin.email }
+               
+                    fetch(`http://localhost:5000/users/${userLogin.email}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(saveUser)
+                    })
+                        .then(res => res.json())
+                        .then(() => {
+                            navigate(from, { replace: true });
+                        })
+                })
+        }
           const handleSUbmit=(event)=>{
             event.preventDefault()
             const name =event.target.name.value
             const email=event.target.email.value
             const password=event.target.password.value
+        
 
             // image upload 
             const image=event.target.image.files[0]
@@ -70,6 +92,7 @@ const Signup = () => {
                       SaveUserFromSite(result.user)
              console.log(result.user.email)
                         toast.success('logged in successfully !') 
+                        UserPanel(result.user.email)
                      
                         navigate(from , {replace: true})
                     })
@@ -158,6 +181,7 @@ const Signup = () => {
                 data-temp-mail-org='0'
               />
             </div>
+   
             <div>
               <div className='flex justify-between'>
                 <label htmlFor='password' className='text-sm mb-2'>

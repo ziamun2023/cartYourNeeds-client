@@ -7,6 +7,8 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthContext';
 const Navbar = () => {
+  const { whatTherole}=useContext(AuthContext)
+  
   const navigate=useNavigate()
 
   const {user,logOut}=useContext(AuthContext)
@@ -55,8 +57,19 @@ const Navbar = () => {
         <div className="dropdown dropdown-end   ">
   <label tabIndex={0} className=" m-1  "><AiOutlineUser className='hover:bg-red-600 rounded-full ' size={30}/></label>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 h-[460px]  bg-[rgb(255,255,255)]  shadow rounded-box w-[300px]">
-  
-<Link to='/AdminAccount'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
+  {
+    
+    whatTherole==='admin' && <Link to='/AdminAccount'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
+  }
+  {
+    
+    whatTherole==='seller' && <Link to='/SellerAccount'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
+  }
+  {
+    
+    whatTherole==='user' && <Link to='/SellerAccount'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
+  }
+
 <hr />
 <p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>Support </p>
 <hr />
@@ -65,7 +78,7 @@ const Navbar = () => {
 <Link to='/becomeAseller'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 bg-yellow-400 rounded-xl px-2 hover:border-1  duration-500'>Become a seller </p>
 </Link>
 
-{user ? <button onClick={logoutFromuser} className='btn bg-[rgb(240,88,123)] my-2 text-black border-0 hover:text-white text-2xl'>Log out</button> : <> <Link to='/login'> <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button></Link>
+{whatTherole ? <button onClick={logoutFromuser} className='btn bg-[rgb(240,88,123)] my-2 text-black border-0 hover:text-white text-2xl'>Log out</button> : <> <Link to='/login'> <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button></Link>
  <div className='flex mt-5'> <p className=' text-gray-400'>no account yet? </p><p className='font-bold ms-3 hover:bg-blue-200 rounded-xl px-2 duration-500'><Link to='/register'>Register</Link></p></div></>
 }
 

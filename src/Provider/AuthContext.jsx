@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
  
 const whatTherole=theRole(user?.email)
-console.log(whatTherole)
+
   const createUser = (email, password) => {
     setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password)
@@ -85,6 +85,7 @@ console.log(whatTherole)
     resetPassword,
     logOut,
     updateUserProfile,
+    whatTherole
     // role,setRole
   }
   console.log(user)
