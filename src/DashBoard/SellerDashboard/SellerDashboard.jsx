@@ -7,7 +7,7 @@ import { VscAccount } from "react-icons/Vsc";
 
 const SellerDashboard = () => {
     return (
-        <div className='grid lg:grid-cols-5 gap-5'>
+        <div className='grid lg:grid-cols-6 gap-5'>
             <div className='lg:col-span-1 hidden lg:block md:block border-2 rounded-xl border-gray-500 '>
 <div className='hover:bg-gray-200 flex hover:text-blue-700  rounded-md mb-3 mt-14 mx-10 py-3 px-3 font-sans  text-[rgb(119,119,119)] text-2xl'><p className='my-auto'><CiShoppingBasket/></p><p className='ms-4'>Add a new Item</p></div>
 <div className='hover:bg-gray-200 flex hover:text-blue-700  rounded-md my-3 mx-10 py-3 px-3 font-sans text-[rgb(119,119,119)] text-2xl'><p className='my-auto'><BsCartCheckFill/></p><p className='ms-4'>My Products</p></div>
@@ -29,7 +29,7 @@ const SellerDashboard = () => {
   </ul>
 </div>
          
-            <div className='lg:col-span-4 bg-[rgb(248,248,248)]  rounded-xl'>
+            <div className='lg:col-span-5 bg-[rgb(248,248,248)]  rounded-xl'>
 dsds
             </div>
         </div>

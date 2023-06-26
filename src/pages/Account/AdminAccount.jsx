@@ -13,7 +13,7 @@ const AdminAccount = () => {
             <div className='bg-[rgb(248,248,248)] w-full h-[200px]'>
              <div className='flex gap-5 my-5 mx-20'><Link to='/'><p className='text-2xl text-black'>Home</p></Link>
              <p>|</p>
-             <p className='text-2xl text-black'>My Account | Seller Dashboard</p>
+             <p className='text-2xl text-black'>My Account | Admin Dashboard</p>
              </div>
                 <p className='text-5xl font-medium text-black mx-20'>Explore All products</p>
             </div>

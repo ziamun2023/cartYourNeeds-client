@@ -12,6 +12,8 @@ import Signup from "../pages/signup/Signup";
 import SellerDashboard from "../DashBoard/SellerDashboard/SellerDashboard";
 import SellerAccount from "../pages/Account/SellerAccount";
 import AdminAccount from "../pages/Account/AdminAccount";
+import ManageUser from "../DashBoard/AdminDashboard/ManageUser";
+import MakeAction from "../DashBoard/AdminDashboard/MakeAction";
 
   export const router = createBrowserRouter([
     {
@@ -41,8 +43,14 @@ import AdminAccount from "../pages/Account/AdminAccount";
       element:<SellerAccount/>
     },
     {
-      path:'/AdminAccount',
-      element:<AdminAccount/>
+      path:'AdminAccount',
+      element:<AdminAccount/>,
+      children:[
+        {path:'ManageUser',
+      element:<ManageUser/>},
+        {path:'MakeAction',
+      element:<MakeAction/>}
+      ]
     },
     {
       path:'/login',

@@ -4,3 +4,19 @@
 
 
 
+.button-clr-role {
+    background: linear-gradient(70deg, rgb(225, 12, 193), rgb(240, 10, 48));
+  }
+
+  .admin-btn{
+    background: linear-gradient(70deg, rgb(44, 235, 146), rgb(152, 247, 133));
+  }
+
+
+
+  .animatin-btn {
+    background: linear-gradient(70deg, rgb(180, 29, 29), rgb(239, 7, 73));
+  }
+  .user-btn {
+    background: linear-gradient(70deg, rgb(235, 239, 29), rgb(234, 242, 164));
+  }
