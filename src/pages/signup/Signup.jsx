@@ -5,6 +5,7 @@ import {AiTwotoneHome} from "react-icons/ai"
 import signup from '../../assets/signup.jpg'
 import { AuthContext } from '../../Provider/AuthContext';
 import { SaveUserFromSite } from '../../api/auth';
+import {FcGoogle} from "react-icons/Fc"
 import { toast } from 'react-hot-toast';
 const Signup = () => {
 
@@ -22,24 +23,23 @@ const Signup = () => {
       updateUserProfile,}=useContext(AuthContext)
       const from =location.state?.from?.pathname || '/'
 
-          
-          // handle create user
-          // const handleGoogleSignIn=()=>{
-          //     signInWithGoogle()
-          //     .then(result=>{
-          //         console.log(result.user)
-          //         toast.success('logged in successfully !')
-          //         navigate(from , {replace: true})
-          //     })
-          //     .catch(err=>{
-          //         console.log(err.message)
-          //         toast.error(err.message)
-          //         setLoading(false)
-          //     })
+     
+          const handleGoogleSignIn=()=>{
+              signInWithGoogle()
+              .then(result=>{
+                  console.log(result.user)
+                  toast.success('logged in successfully !')
+                  navigate(from , {replace: true})
+              })
+              .catch(err=>{
+                  console.log(err.message)
+                  toast.error(err.message)
+                  setLoading(false)
+              })
   
   
   
-          // }
+          }
 
           const handleSUbmit=(event)=>{
             event.preventDefault()
@@ -187,8 +187,13 @@ const Signup = () => {
             </button>
           </div>
         </form>
+        
                     
-     
+        <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+          <FcGoogle size={32} />
+
+          <p>Continue with Google</p>
+        </div>
 </>
      
  <div className='flex mt-5'> <p className=' text-gray-800'>Already have an account? </p><p className='font-bold ms-3 hover:bg-blue-200 rounded-xl px-2 duration-500 text-black'><Link to='/login'>Login</Link></p></div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Marquee from "react-fast-marquee";
-import UserDashBoard from '../../DashBoard/UserDashboard/UserDashBoard';
-const UserAccount = () => {
+import SellerDashboard from '../../DashBoard/SellerDashboard/SellerDashboard';
+const SellerAccount = () => {
     return (
         <div >
             <div >
@@ -13,7 +13,7 @@ const UserAccount = () => {
             <div className='bg-[rgb(248,248,248)] w-full h-[200px]'>
              <div className='flex gap-5 my-5 mx-20'><Link to='/'><p className='text-2xl text-black'>Home</p></Link>
              <p>|</p>
-             <p className='text-2xl text-black'>My Account | User Dashboard</p>
+             <p className='text-2xl text-black'>My Account | Seller Dashboard</p>
              </div>
                 <p className='text-5xl font-medium text-black mx-20'>Explore All products</p>
             </div>
@@ -27,10 +27,10 @@ const UserAccount = () => {
      {/* dashBoard */}
 
    <div className='mx-20'>
-   <UserDashBoard/>
+   <SellerDashboard/>
    </div>
         </div>
     );
 };
 
-export default UserAccount;
+export default SellerAccount;

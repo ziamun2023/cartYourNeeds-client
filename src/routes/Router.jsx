@@ -9,6 +9,9 @@ import BecomeAseller from "../pages/becomeAseller/BecomeAseller";
 import AllProductsPage from "../component/ExploreAllproduct/AllProductsPage";
 import Login from "../pages/login/Login";
 import Signup from "../pages/signup/Signup";
+import SellerDashboard from "../DashBoard/SellerDashboard/SellerDashboard";
+import SellerAccount from "../pages/Account/SellerAccount";
+import AdminAccount from "../pages/Account/AdminAccount";
 
   export const router = createBrowserRouter([
     {
@@ -32,6 +35,14 @@ import Signup from "../pages/signup/Signup";
     {
       path:'/becomeAseller',
       element:<BecomeAseller/>
+    },
+    {
+      path:'/SellerAccount',
+      element:<SellerAccount/>
+    },
+    {
+      path:'/AdminAccount',
+      element:<AdminAccount/>
     },
     {
       path:'/login',

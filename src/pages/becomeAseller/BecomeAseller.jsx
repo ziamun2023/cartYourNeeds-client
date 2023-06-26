@@ -20,7 +20,7 @@ const BecomeAseller = () => {
        
 
 <Link to='/'>            <p className='text-center text-2xl  btn border-0 text-white mx-auto mt-5'>Home</p></Link>
-<p>log in</p>
+
                 <p className='text-center text-6xl text-black mt-10'>Seller Information</p>
         
 

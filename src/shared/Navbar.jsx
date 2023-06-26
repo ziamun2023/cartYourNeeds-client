@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthContext';
 const Navbar = () => {
-  
+  const navigate=useNavigate()
+
+  const {user,logOut}=useContext(AuthContext)
+  const logoutFromuser=()=>{
+    logOut()
+    navigate('/')
+  }
     return (
       <div className="navbar  h-[90px]  bg-[rgb(255,255,255)] rounded-2xl   text-black">
         <div className="navbar-start">
@@ -58,10 +65,12 @@ const Navbar = () => {
 <Link to='/becomeAseller'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 bg-yellow-400 rounded-xl px-2 hover:border-1  duration-500'>Become a seller </p>
 </Link>
 
+{user ? <button onClick={logoutFromuser} className='btn bg-[rgb(240,88,123)] my-2 text-black border-0 hover:text-white text-2xl'>Log out</button> : <> <Link to='/login'> <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button></Link>
+ <div className='flex mt-5'> <p className=' text-gray-400'>no account yet? </p><p className='font-bold ms-3 hover:bg-blue-200 rounded-xl px-2 duration-500'><Link to='/register'>Register</Link></p></div></>
+}
 
- <Link to='/login'> <button className='btn bg-[rgb(53,119,240)] my-2 text-black border-0 hover:text-white text-2xl'>Log in</button></Link>
  
- <div className='flex mt-5'> <p className=' text-gray-400'>no account yet? </p><p className='font-bold ms-3 hover:bg-blue-200 rounded-xl px-2 duration-500'><Link to='/register'>Register</Link></p></div>
+
   </ul>
 </div>
 
