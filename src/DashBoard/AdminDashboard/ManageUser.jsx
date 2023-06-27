@@ -7,6 +7,7 @@ import { UserPanel, adminPanel, sellerPanel } from '../../api/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { Slide } from 'react-awesome-reveal';
 
 const ManageUser = () => {
   const { user, logOut ,role,setRole} = useContext(AuthContext)
@@ -54,8 +55,11 @@ console.log(email)
     console.log(alluser)
 
     return (
-        <div className="overflow-x-auto">
-        <table className="table">
+      <>
+      <Slide direction='left'>
+      <div className="overflow-x-auto">
+          <p className='text-center text-black text-3xl'>All user</p>
+        <table className="table ">
           <thead>
             <tr>
               <th  className='text-black text-[14px]'>#</th> 
@@ -72,20 +76,22 @@ console.log(email)
           </thead> 
           <tbody >
             {
-              users.map((c,index)=><tr>
+              users.map((c,index)=><tr className=' hover:translate-x-5 hover:rounded-2xl relative duration-500 hover:shadow-2xl  hover:bg-slate-200 hover:text-black' >
                 <th>{index+1}</th>
-                <td className='text-black text-[13px]'>{}</td>
-                <td className='text-black text-[13px]'>{c.email}</td>
+           
+            <td className='text-black text-[13px]'>{}</td>
+                <td className='text-black text-[13px] '>{c.email}</td>
                 <td className='text-black text-[13px]'>{c.email}</td>
                 <td className='text-black text-[13px]'>{c.role}</td>
+       
                 <td className='text-black text-[13px]'>Details</td>
                 {/* <td className='text-black text-[13px]'>{c.email}</td> */}
                 {/* <td className='text-black text-[13px]'>{c.email}</td> */}
                 <td class Name='text-black text-[13px]  '>
                   
-                <button onClick={()=>makeAdmin(`${c.email}`)} className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md   animatin-btn duration-500'>admin</button>
-      <button onClick={()=>makeSeller(`${c.email}`)} className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md admin-btn duration-500'>Seller</button>
-      <button  onClick={()=>makeUser(`${c.email}`)}  className=' text-black p-4 ms-2 text-semibold  font-semibold rounded-md user-btn  duration-500'>User</button></td> 
+                <button onClick={()=>makeAdmin(`${c.email}`)} className={`btn mx-2 ${c.role==='admin'?"bg-gray-500 text-black":"bg-white"} bg-white border-0 text-black hover:text-white duration-300 shadow-xl`}>admin</button>
+      <button onClick={()=>makeSeller(`${c.email}`)} className={`btn mx-2 ${c.role==='seller'?"bg-gray-500 text-black":"bg-white"} bg-white border-0 text-black hover:text-white duration-300 shadow-xl`}>Seller</button>
+      <button  onClick={()=>makeUser(`${c.email}`)}  className={`btn mx-2 ${c.role==='user'?"bg-gray-500 text-black":"bg-white"} bg-white border-0 text-black hover:text-white duration-300 shadow-xl`}>User</button></td> 
          
               
               </tr>)
@@ -96,7 +102,7 @@ console.log(email)
      
         </table>
        
-      </div>
+      </div></Slide></>
     );
 };
 

@@ -1,8 +1,11 @@
 import React, { useContext, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthContext';
+import { Slide } from 'react-awesome-reveal';
+import { useQuery } from '@tanstack/react-query';
 
 const AddnewItem = () => {
+
     const [selectedOption, setSelectedOption] = useState('');
 
     const handleOptionChange = (e) => {
@@ -24,8 +27,9 @@ const AddnewItem = () => {
         const price=parseInt(form.price.value)
         const quantity=form.quantity.value
         const description=form.description.value
+        const date = new Date();
        
-        const classAdded={sellername,selleremail,image,name,totalpurchase,status,category,price,quantity,description}
+        const classAdded={sellername,selleremail,date,image,name,totalpurchase,status,category,price,quantity,description}
 
 console.log(classAdded)
 
@@ -48,12 +52,17 @@ console.log(classAdded)
             })
            }
         })
+    
         console.log(classAdded)
     }
 
     return (
-        <form onSubmit={handleSubmit} action="">
-        <div className='grid lg:ms-20 ms-10 lg:grid-cols-3 gap-4'>
+       <>
+       <Slide direction='down'>
+     
+       <form onSubmit={handleSubmit} action="">
+       <p className='text-center text-3xl text-black'>Add new Item</p>
+        <div className='grid lg:ms-20 ms-10 lg:grid-cols-4 gap-4'>
 
 
         <div className="form-control w-full max-w-xs">
@@ -162,8 +171,8 @@ console.log(classAdded)
 
 
         </div>
-        <input type="submit" className='btn bg-blue-300 border-0 shadow-xl mx-10 w-full  my-10 text-center text-black hover:text-white' value="submit" />
-         </form>
+        <input type="submit" className='btn bg-blue-300 border-0 shadow-xl   my-10 text-center text-black hover:text-white' value="submit" />
+         </form></Slide></>
     );
 };
 

@@ -40,7 +40,7 @@ const Home = () => {
     }
     return (
         <>
-         <div className='bg-[rgb(249,243,240)] h-[630px] z-30 '>
+         <div className='bg-[rgb(249,243,240)] bg-white rounded-3xl mx-14 mt-5 shadow-2xl h-[630px] z-30 '>
          {bannerOne && <Slider/>}   
          {random && <Slider/>}   
          {bannerTwo && <Slider2/>}   
@@ -48,7 +48,7 @@ const Home = () => {
 
       
          </div>
-         <p className='text-center'>   <div className="join ">
+         <p className='text-center'>   <div className="join mt-5">
   <input onClick={Banner1}  className="join-item btn btn-square" type="radio" name="options" aria-label="1"  />
   <input onClick={Banner2}  className="join-item btn btn-square" type="radio" name="options" aria-label="2"  />
   <input onClick={Banner3} className="join-item btn btn-square" type="radio" name="options" aria-label="3"   />

@@ -20,3 +20,6 @@
   .user-btn {
     background: linear-gradient(70deg, rgb(235, 239, 29), rgb(234, 242, 164));
   }
+  .dashSearch {
+    background: linear-gradient(70deg, rgb(237, 240, 245), rgb(154,194,238));
+  }

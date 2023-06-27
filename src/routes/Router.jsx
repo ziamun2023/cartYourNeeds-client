@@ -20,6 +20,7 @@ import UserPrivateRoute from "../private/UserPrivateRoute";
 import Confirmation from "../pages/becomeAseller/Confirmation";
 import AddnewItem from "../DashBoard/SellerDashboard/AddnewItem";
 import Myproducts from "../DashBoard/SellerDashboard/Myproducts";
+import ManageProducts from "../DashBoard/AdminDashboard/ManageProducts";
 
 
   export const router = createBrowserRouter([
@@ -51,7 +52,7 @@ import Myproducts from "../DashBoard/SellerDashboard/Myproducts";
       element:<SellerPrivateRoute><SellerAccount/></SellerPrivateRoute>,
       children:[
         {path:'addnewProduct',
-      element:<AddnewItem/>}
+      element:<AddnewItem/>},
         {path:'sellerproducts',
       element:<Myproducts/>}
       ]
@@ -63,7 +64,9 @@ import Myproducts from "../DashBoard/SellerDashboard/Myproducts";
         {path:'ManageUser',
       element:<ManageUser/>},
         {path:'MakeAction',
-      element:<MakeAction/>}
+      element:<MakeAction/>},
+        {path:'ManageProducts',
+      element:<ManageProducts/>}
       ]
     },
     {

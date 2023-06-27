@@ -8,7 +8,7 @@ import banner1 from '../../assets/posterHeadphone.png'
 
 const SpecialOffer = () => {
     return (
-        <div className='bg-[white] mx-20 grid lg:grid-cols-2 h-[440px] mt-20'>
+        <div className='bg-[white]   shadow-xl rounded-xl mx-20 grid lg:grid-cols-2 h-[440px] mt-20'>
         <div data-aos="fade-up"  className='col-span-1 my-auto lg:ms-20'> 
           <div > <p className='text-[rgb(253,106,146)] '>Hot deal i this Week</p></div> 
            <div  > <p className='lg:text-7xl md:text-4xl text-2xl text-black font-medium '>Enhance Your Music Experience</p></div>
