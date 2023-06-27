@@ -1,5 +1,6 @@
 //it is to save data to database
 
+
 export const SaveUserFromSite =user=>{
         const currentUser={
             email: user.email,
@@ -14,6 +15,7 @@ export const SaveUserFromSite =user=>{
         })
     .then(res=>res.json())
     .then(data=>console.log(data))
+ 
     }
 
 // Admin Panel
@@ -30,6 +32,7 @@ export const SaveUserFromSite =user=>{
             body: JSON.stringify(currentUser)
         })
     .then(res=>res.json())
+
    
     }
 
@@ -72,6 +75,7 @@ export const SaveUserFromSite =user=>{
     //seller request to admin
     export const adminRequest =(email)=>{
         const currentUser={
+           
             requestToSell: 'pending',
             requestMessage:'hello Admin , i want to be a seller in your website, would like to grow business with this website, please consider my request '
 

@@ -9,6 +9,7 @@ import {FcGoogle} from "react-icons/Fc"
 
 import { toast } from 'react-hot-toast';
 const Signup = () => {
+  const refresh = () => window.location.reload(true)
 
 
 
@@ -94,10 +95,11 @@ const Signup = () => {
                       SaveUserFromSite(result.user)
              console.log(result.user.email)
                         toast.success('logged in successfully !') 
-                        UserPanel(result.user.email)
+                        // UserPanel(result.user.email)
                      
                      
                         navigate(from , {replace: true})
+                        refresh()
                     })
                     .catch(err=>{
                         setLoading(false)
@@ -204,6 +206,7 @@ const Signup = () => {
 
           <div>
             <button
+         
 
               type='submit'
               className='bg-[rgb(136,108,94)] w-full rounded-md py-3 text-white'

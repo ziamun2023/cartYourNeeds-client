@@ -9,14 +9,19 @@ import {
 import { router } from './routes/Router.jsx';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './Provider/AuthContext.jsx';
-
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    <div className='bg-[rgb(249,243,240)]'>
    <AuthProvider>
     <Toaster />
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+
+<RouterProvider router={router}></RouterProvider>
+
+    </QueryClientProvider>
+   
   </AuthProvider>
    </div>
   </React.StrictMode>,

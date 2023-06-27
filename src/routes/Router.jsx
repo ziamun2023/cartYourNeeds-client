@@ -9,7 +9,7 @@ import BecomeAseller from "../pages/becomeAseller/BecomeAseller";
 import AllProductsPage from "../component/ExploreAllproduct/AllProductsPage";
 import Login from "../pages/login/Login";
 import Signup from "../pages/signup/Signup";
-import SellerDashboard from "../DashBoard/SellerDashboard/SellerDashboard";
+
 import SellerAccount from "../pages/Account/SellerAccount";
 import AdminAccount from "../pages/Account/AdminAccount";
 import ManageUser from "../DashBoard/AdminDashboard/ManageUser";
@@ -19,6 +19,8 @@ import SellerPrivateRoute from "../private/SellerPrivateRoute";
 import UserPrivateRoute from "../private/UserPrivateRoute";
 import Confirmation from "../pages/becomeAseller/Confirmation";
 import AddnewItem from "../DashBoard/SellerDashboard/AddnewItem";
+import Myproducts from "../DashBoard/SellerDashboard/Myproducts";
+
 
   export const router = createBrowserRouter([
     {
@@ -38,9 +40,7 @@ import AddnewItem from "../DashBoard/SellerDashboard/AddnewItem";
     {
       path:'/account',
       element:<UserPrivateRoute><UserAccount/></UserPrivateRoute>,
-      children:[
-        
-      ]
+   
     },
     {
       path:'/becomeAseller',
@@ -52,6 +52,8 @@ import AddnewItem from "../DashBoard/SellerDashboard/AddnewItem";
       children:[
         {path:'addnewProduct',
       element:<AddnewItem/>}
+        {path:'sellerproducts',
+      element:<Myproducts/>}
       ]
     },
     {

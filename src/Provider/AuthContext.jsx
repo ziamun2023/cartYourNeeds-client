@@ -64,6 +64,8 @@ console.log(whatTherole)
       photoURL: photo,
     })
   }
+// fetch all user
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -86,7 +88,8 @@ console.log(whatTherole)
     resetPassword,
     logOut,
     updateUserProfile,
-    whatTherole
+    whatTherole,
+  
     // role,setRole
   }
   console.log(user)

@@ -13,7 +13,7 @@ const UserPrivateRoute = ({ children }) => {
     return  <p>loader</p>
   }
 
-  if (whatTherole==='user') {
+  if (user) {
     return children 
   }
   return <Navigate to='/login' state={{ from: location }} replace></Navigate>

@@ -6,13 +6,15 @@ import { AiOutlineUser } from "react-icons/ai";
 
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthContext';
+// import { alldata } from '../api/getALLdata';
 const Navbar = () => {
-
+  
 
   const { whatTherole}=useContext(AuthContext)
   console.log(whatTherole)
   const navigate=useNavigate()
-
+// const data=alldata()
+// console.log(data)
   const {user,logOut}=useContext(AuthContext)
   const logoutFromuser=()=>{
     logOut()
@@ -59,6 +61,7 @@ const Navbar = () => {
         <div className="dropdown dropdown-end   ">
   <label tabIndex={0} className=" m-1  "><AiOutlineUser className='hover:bg-red-600 rounded-full ' size={30}/></label>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 h-[460px]  bg-[rgb(255,255,255)]  shadow rounded-box w-[300px]">
+
   {
     
     whatTherole==='admin' && <Link to='/AdminAccount'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
@@ -69,8 +72,9 @@ const Navbar = () => {
   }
   {
     
-    whatTherole==='user' && <Link to='/account'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
+   user && <Link to='/account'><p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>My account</p></Link>
   }
+ 
 
 <hr />
 <p className='text-2xl  hover:bg-blue-200 py-3 my-3 rounded-xl px-2 hover:border-1 duration-500'>Support </p>

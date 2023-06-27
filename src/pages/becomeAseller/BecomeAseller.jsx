@@ -8,17 +8,51 @@ import { toast } from 'react-hot-toast';
 import { adminRequest } from '../../api/auth';
 
 const BecomeAseller = () => {
+
   const {user}=useContext(AuthContext)
 const navigate=useNavigate()
-  const request=()=>{
-    
+  const request=(e)=>{
+  e.preventDefault()
+  const form=e.target
+
+const shopName=form.shopName.value
+const request='New Request for become a seller'
+const email=form.email.value
+const updatedData = {
+  email: user?.email,
+  shopName:shopName,
+  request:request
+};
    
   
-    adminRequest(user.email).then(data=>{
-      toast.success('Request sent to Admin,You will notify in the Account section , Thanks for joinign us. ')
+    // adminRequest(user.email).then(data=>{
+    //   toast.success('Request sent to Admin,You will notify in the Account section , Thanks for joinign us. ')
      
     
-    })
+    // })
+    fetch(`http://localhost:5000/updatedoc`,{
+      method: "PUT",
+      headers: {'Content-Type':'application/json'},
+      body : JSON.stringify(updatedData)
+  })
+  .then(res=>res.json())
+  .then(data=>{
+      if(data.modifiedCount>0){
+          Swal.fire({
+            title: 'success!',
+            text: 'Successfully sent shop name',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+          // navigate('/mytoys')
+        
+         }
+      
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the fetch
+    console.error('Error updating data:', error);
+  });
     navigate('/Confirmation')
   
   }
@@ -44,7 +78,7 @@ const navigate=useNavigate()
               
 
 
-            <form className="z-10 card-body shadow-2xl rounded-xl   mt-5">
+            <form onSubmit={request} className="z-10 card-body shadow-2xl rounded-xl   mt-5">
           
             {/* <div className="form-control col-span-2">
         
@@ -63,21 +97,21 @@ const navigate=useNavigate()
         </div> */}
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Seller Name</span>
+            <span className="label-text">Seller Email</span>
           </label>
-          <input type="text" placeholder="enter your Name" className="bg-white py-5 px-2 rounded-lg" />
+          <input value={user?.email} name='email' placeholder="enter your Name" className="bg-white py-5 px-2 rounded-lg" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Shop Name</span>
           </label>
-          <input type="text" placeholder="Enter Your shop name" className="bg-white py-5 px-2 rounded-lg" />
+          <input required type="text" name='shopName' placeholder="Enter Your shop name" className="bg-white py-5 px-2 rounded-lg" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">Seller Name</span>
           </label>
-          <input type="email"  placeholder="Enter Your  email"  className="bg-white py-5 px-2 rounded-lg" />
+          <input required  placeholder="Enter Your  Name"  className="bg-white py-5 px-2 rounded-lg" />
         </div>
      
     
@@ -85,7 +119,7 @@ const navigate=useNavigate()
 
     
         <div className="form-control mt-6 col-span-2">
-          <button onClick={request} className="btn">Send Request to Admin</button>
+          <input type='submit' value='Send Request to Admin'  className="btn"/>
         </div>
       </form>
     </div>

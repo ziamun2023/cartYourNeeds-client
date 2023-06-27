@@ -6,17 +6,25 @@ import { toast } from 'react-hot-toast';
 import { UserPanel, adminPanel, sellerPanel } from '../../api/auth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 const ManageUser = () => {
   const { user, logOut ,role,setRole} = useContext(AuthContext)
 const navigate=useNavigate()
+const {data: users =[], refetch}=useQuery(['CUN-user'],async()=>{
+  const res=await fetch(`http://localhost:5000/allUser`)
+  return res.json()
+})
+
+
+
 
  const makeAdmin=(email)=>{
   adminPanel(email).then(data=>{
     console.log(data)
   
     Swal.fire(email, 'This user has become  An Admin of CART YOUR NEED website ')
-   
+    refetch()
    
    })
 console.log(email)
@@ -25,7 +33,7 @@ console.log(email)
   sellerPanel(email).then(data=>{
   
     Swal.fire(email, 'This user has become A seller of CART YOUR NEED website ')
-   
+    refetch()
     })
 
    
@@ -35,7 +43,7 @@ console.log(email)
   UserPanel(email).then(data=>{
   
     Swal.fire(email, 'This user has become A user of CART YOUR NEED website ')
-   
+    refetch()
     })
 
    
@@ -64,7 +72,7 @@ console.log(email)
           </thead> 
           <tbody >
             {
-              alluser.map((c,index)=><tr>
+              users.map((c,index)=><tr>
                 <th>{index+1}</th>
                 <td className='text-black text-[13px]'>{}</td>
                 <td className='text-black text-[13px]'>{c.email}</td>
