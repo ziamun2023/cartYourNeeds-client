@@ -1,27 +1,61 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const ManageProductCard = ({product,index,refetch}) => {
-    const handleDeleteCart=prdoduct=>{
+    const HandleDeny=prdoduct=>{
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Are you sure, you want deny?',
+            text: "This product wil not be published!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, Deny it!'
           }).then((result) => {
             if (result.isConfirmed) {
-             fetch(`http://localhost:5000/deleteProduct/${prdoduct._id}`,{
-                method:"DELETE"
+             fetch(`http://localhost:5000/allproducts/deny/${prdoduct._id}`,{
+                method:"PUT"
+                
              })
              .then(res=>res.json())
              .then(data=>{
-                if(data.deletedCount>0){
-                    refetch()
+                refetch()
+                if(data){
+                  
                     Swal.fire(
-                        "Deleted!",
-                        'Your Cart Item has been deleted',
+                        "Deny!",
+                        'This product has been rejected',
+                        'success'
+                    )
+                    refetch()
+                }
+             })
+            }
+          })
+    }
+    const handleApprove=prdoduct=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This product wil  be published!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, approve it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+             fetch(`http://localhost:5000/allproducts/approve/${prdoduct._id}`,{
+                method:"PUT"
+                
+             })
+             .then(res=>res.json())
+             .then(data=>{
+                refetch()
+                if(data){
+                  
+                    Swal.fire(
+                        "Published!",
+                        'This product has been published to Website',
                         'success'
                     )
                     refetch()
@@ -33,7 +67,7 @@ const ManageProductCard = ({product,index,refetch}) => {
    
     const {sellername,selleremail,image,name,totalpurchase,status,category,price,quantity,description}=product
     return (
-        <tr className='hover:translate-x-5 relative duration-500 hover:shadow-2xl hover:rounded-2xl hover:bg-slate-200 hover:text-black'>
+        <tr className='relative'>
         <th>
          {index+1}
         </th>
@@ -45,29 +79,29 @@ const ManageProductCard = ({product,index,refetch}) => {
               </div>
             </div>
             <div>
-              <div className="font-bold">{name}</div>
-              <div className="text-sm opacity-50">{category}</div>
+              <div className="font-bold text-black">{name}</div>
+              <div className="text-sm opacity-50 text-black">{category}</div>
             </div>
           </div>
         </td>
       
-        <td>{price}</td>
+        <td className='text-black'>{price}</td>
        
         <td>
           seller Name : {sellername} 
           <br/>
-          <span className="badge badge-ghost badge-sm">Email: {selleremail}</span>
+          <span className="badge badge-ghost ">Email: {selleremail}</span>
         </td>
         <th>
-        <td>{quantity}</td>
+        <td className='text-black'>{quantity}</td>
         </th>
         <th>
-        <td>{status}</td>
+        <td className='text-black'>{status}</td>
         </th>
         <th>
-        <td className='flex gap-3'><div><button className='btn bg-white border-0 text-black hover:text-white duration-300 shadow-xl'>Approve</button></div><div><button onClick={()=>HandleDeny(product)} className='btn border-0 hover:bg-red-500 bg-white shadow-xl text-black'>Deny</button></div></td>
+        <td className='flex gap-3'><div><button onClick={()=>handleApprove(product)} className='btn bg-white border-0 text-black hover:text-white duration-300 shadow-xl'>Approve</button></div><div><button onClick={()=>HandleDeny(product)} className='btn border-0 hover:bg-red-500 bg-white shadow-xl text-black'>Deny</button></div></td>
         </th>
-        <p className={`absolute top-2 w-2 ${status==='pending'?"bg-yellow-400" :"bg-green-300"} left-0 rounded-r-lg h-[80px] `}></p>
+        <p className={`absolute  ${status==='Rejected' && "bg-red-400" } ${status==='approved' && "bg-green-400" }  top-2 w-2 ${status==='pending' && "bg-yellow-400" } left-0 rounded-r-lg h-[80px] `}></p>
       </tr>
     );
 };

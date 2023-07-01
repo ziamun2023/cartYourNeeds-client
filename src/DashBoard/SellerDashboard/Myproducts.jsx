@@ -7,7 +7,13 @@ import { AuthContext } from '../../Provider/AuthContext';
 const Myproducts = () => {
     const {user}=useContext(AuthContext)
     const {data: products =[], refetch}=useQuery(['CUN-products'],async()=>{
-        const res=await fetch(`http://localhost:5000/specific/${user?.email}`)
+        const res=await fetch(`http://localhost:5000/specific/${user?.email}`
+        ,{
+          headers:{
+         
+            authorization: `bearer ${localStorage.getItem('access-token')}`
+          },
+        })
         return res.json()
       })
       console.log(products)

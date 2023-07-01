@@ -1,7 +1,8 @@
+import { setItem } from 'localforage';
 import React from 'react';
 import Swal from 'sweetalert2';
 
-const ProductsCard = ({product,index,refetch}) => {
+const UserCartsCards = ({product,index,refetch}) =>{
 
     const handleDeleteCart=prdoduct=>{
         Swal.fire({
@@ -14,19 +15,19 @@ const ProductsCard = ({product,index,refetch}) => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-             fetch(`http://localhost:5000/deleteProduct/${prdoduct._id}`,{
+             fetch(`http://localhost:5000/deleteCart/${prdoduct._id}`,{
                 method:"DELETE"
              })
              .then(res=>res.json())
              .then(data=>{
                 if(data.deletedCount>0){
-                    refetch()
+                  refetch()
                     Swal.fire(
                         "Deleted!",
                         'Your Cart Item has been deleted',
                         'success'
                     )
-                    refetch()
+                  
                 }
              })
             }
@@ -35,7 +36,7 @@ const ProductsCard = ({product,index,refetch}) => {
    
     const {sellername,selleremail,image,name,totalpurchase,status,category,price,quantity,description}=product
     return (
-        <tr className='hover:translate-x-5 relative duration-500 hover:shadow-2xl hover:rounded-2xl hover:bg-slate-200 hover:text-black'>
+        <tr className='relative duration-500 hover:shadow-2xl hover:rounded-2xl hover:bg-slate-200 hover:text-black'>
         <th>
          {index+1}
         </th>
@@ -67,12 +68,12 @@ const ProductsCard = ({product,index,refetch}) => {
         <td>{status}</td>
         </th>
         <th>
-        <td className='flex gap-3'><div><button className='btn bg-white border-0 text-black hover:text-white duration-300 shadow-xl'>Update</button></div><div><button onClick={()=>handleDeleteCart(product)} className='btn border-0 hover:bg-red-500 bg-white shadow-xl text-black'>Delete</button></div></td>
+        <td className='flex gap-3'><div><button onClick={()=>handleDeleteCart(product)} className='btn border-0 hover:bg-red-500 bg-white shadow-xl text-black'>Delete</button></div></td>
         </th>
-        <p className={`absolute  ${status==='Rejected' && "bg-red-400" } ${status==='approved' && "bg-green-400" }  top-2 w-2 ${status==='pending' && "bg-yellow-400" } left-0 rounded-r-lg h-[80px] `}></p>
+        {/* <p className={`absolute  ${status==='Rejected' && "bg-red-400" } ${status==='approved' && "bg-green-400" }  top-2 w-2 ${status==='pending' && "bg-yellow-400" } left-0 rounded-r-lg h-[80px] `}></p> */}
       </tr>
    
     );
 };
 
-export default ProductsCard;
+export default UserCartsCards;

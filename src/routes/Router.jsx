@@ -21,6 +21,7 @@ import Confirmation from "../pages/becomeAseller/Confirmation";
 import AddnewItem from "../DashBoard/SellerDashboard/AddnewItem";
 import Myproducts from "../DashBoard/SellerDashboard/Myproducts";
 import ManageProducts from "../DashBoard/AdminDashboard/ManageProducts";
+import UserMyCart from "../DashBoard/UserDashboard/UserMyCart";
 
 
   export const router = createBrowserRouter([
@@ -39,8 +40,12 @@ import ManageProducts from "../DashBoard/AdminDashboard/ManageProducts";
       ]
     },
     {
-      path:'/account',
+      path:'account',
       element:<UserPrivateRoute><UserAccount/></UserPrivateRoute>,
+      children:[
+        {path:'carts',
+        element:<UserMyCart/> }
+      ]
    
     },
     {
